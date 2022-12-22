@@ -6,6 +6,6 @@
 
 <style lang="scss">
 div {
-  background-color: $primary;
+  background-color: $background-blanc;
 }
 </style>
