@@ -1,6 +1,5 @@
 <template>
-  <figure>
-  </figure>
+  <figure></figure>
 </template>
 
 <script setup>

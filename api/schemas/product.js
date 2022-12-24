@@ -73,6 +73,12 @@ export default {
       title: "Body",
       type: "localeBlockContent",
     },
+    // NEW: field added par moi
+    {
+      title: "Car Sold?",
+      name: "sold",
+      type: "boolean",
+    },
   ],
 
   preview: {
