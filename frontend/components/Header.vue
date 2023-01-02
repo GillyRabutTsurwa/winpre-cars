@@ -21,16 +21,32 @@ const isDark = ref(false);
 const mode = computed(() => {
   return isDark.value ? "Dark" : "Light";
 });
+console.log(mode.value);
 
+const currentMode = computed(() => {
+  /**
+   * NEWNOTEIMPORTANT:
+   * this computed value changes based on mode (computed property abouve)...
+   * ...which, itself, is a computed value (above) which changes based on the isDark ref value
+   */
+  return mode.value;
+});
+
+/**
+ * NOTEIMPORTANT:
+ * i have rewritten this code to address the warning of attempting to change a computed a value...
+ * ... which is solely supposed to be read-only
+ * isDark, a ref value will toggle between true and false. that doesn't change
+ * but pay attention that the mode computed property will change between Dark and Light, as isDark changes between true and false
+ * and the currentMode computed property is a computed property that simply returns the mode computed property value
+ */
 const toggleMode = () => {
-  // change "dark" or "light" text on header
-  mode.value = isDark ? "Dark" : "Light";
+  isDark.value = !isDark.value; //NOTE: this changing will change mode, hence changing currentMode as well
 
-  // toggle actual darkmode value on click;
-  isDark.value = !isDark.value;
+  console.log(currentMode.value);
 
   // send that togglable value to the parent
-  emit("test", mode.value);
+  emit("test", currentMode.value);
 };
 </script>
 
