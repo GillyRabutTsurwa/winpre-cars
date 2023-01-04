@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="logo">
-      <img v-if="mode === 'Light'" src="~/assets/svg/Orange_BlackText_NoNumber.svg" alt="">
+      <img v-if="props.mode === 'Light'" src="~/assets/svg/Orange_BlackText_NoNumber.svg" alt="">
       <img v-else src="~/assets/svg/Orange_WhiteText_NoNumber.svg" alt="">
     </div>
     <ul class="links-footer__main">
@@ -28,41 +28,36 @@
       <li class="links-main--item">Testimonials</li>
       <li class="links-main--item">Contact</li>
     </ul>
-    <h3>&copy; Gilbert Rabut Tsurwa 2022. All Rights Reserved</h3>
+    <h3 class="copyright">&copy; Gilbert Rabut Tsurwa 2022. All Rights Reserved</h3>
   </footer>
 </template>
   
 <script setup>
-const emit = defineEmits({
-  test(payload) {
-    const theme = payload;
-    if (theme) {
-      console.log(theme);
-      return true;
-    } else {
-      console.warn("No payload");
-      return false;
-    }
+/**
+ * NOTE: using props keep track of the mode in the footer
+ * but more importantly, i'm using it to dynamically change the logo in the footer
+ */
+const props = defineProps({
+  mode: {
+    type: String,
+    required: true,
   },
 });
-
-const mode = ref("Light");
-const toggleMode = (theme) => {
-  mode.value = mode.value === "Dark" ? "Light" : "Dark";
-  theme = mode.value === "Dark" ? "Light" : "Dark";
-  emit("test", theme);
-};
+console.log(props.mode);
 </script>
   
   <style lang="scss" scoped>
 .footer {
   width: 100%;
+  height: 50rem;
   padding: 0 4rem;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  // grid-template-rows: repeat(3, 1fr);
   row-gap: 2.5rem;
   background-color: $background-blanc;
+
   .logo {
     // width: 15rem;
     width: 20rem;
@@ -102,6 +97,11 @@ const toggleMode = (theme) => {
     &--item {
       margin-right: 1.5rem;
     }
+  }
+
+  .copyright {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
   }
 }
 </style>

@@ -5,7 +5,9 @@
       <img v-else src="~/assets/svg/Orange_WhiteText_NoNumber.svg" alt="">
     </div>
     <ul class="links-main">
-      <li class="links-main--item">Home</li>
+      <li class="links-main--item">
+        <NuxtLink to="/">Home</NuxtLink>
+      </li>
       <li class="links-main--item">Inventory</li>
       <li class="links-main--item">About Us</li>
       <li class="links-main--item">Contact</li>

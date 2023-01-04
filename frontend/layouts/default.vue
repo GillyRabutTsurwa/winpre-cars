@@ -1,8 +1,8 @@
 <template>
-  <div :class="headerFooterClasses">
+  <div :class="headerFooterClasses" class="container">
     <Header @test="logMode" :class="headerFooterClasses" />
     <slot />
-    <Footer @test="logMode" :class="headerFooterClasses" />
+    <Footer :class="headerFooterClasses" :mode="currentMode" />
   </div>
 </template>
 
@@ -24,6 +24,9 @@ const headerFooterClasses = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  position: relative;
+}
 .dark {
   background-color: $background-sombre;
   color: $background-blanc;

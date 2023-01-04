@@ -5,12 +5,12 @@
       <Second />
       <Third />
 
-      <div v-for="currentProduct in state.products" :key="currentProduct._id">
-        {{ currentProduct.title }}
+      <div v-for="currentCar in state.cars" :key="currentCar._id">
+        {{ currentCar.title }}
       </div>
 
-      <NuxtLink v-for="currentProduct in state.products" :key="currentProduct._id" :to="currentProduct.slug.current">
-        {{ currentProduct.title }}
+      <NuxtLink v-for="currentCar in state.cars" :key="currentCar._id" :to="`/cars/${currentCar.slug.current}`">
+        {{ currentCar.title }}
       </NuxtLink>
     </main>
   </ClientOnly>
@@ -19,18 +19,18 @@
 
 <script setup>
 const state = reactive({
-  products: [],
+  cars: [],
 });
 
 (async () => {
   try {
-    const query = groq`*[_type == "product"]`;
+    const query = groq`*[_type == "car"]`;
     const { data, error } = await useSanityQuery(query);
     if (error.value) throw new Error(`Error: ${error.value}`);
     console.log(data);
-    state.prodcuts = data.value;
-    console.log(state.products);
-    console.log(Array.isArray(state.products));
+    state.cars = data.value;
+    console.log(state.cars);
+    console.log(Array.isArray(state.cars));
   } catch (error) {
     console.log(error);
   }
