@@ -1,6 +1,3 @@
 [submodule "api"]
 	path = api
 	url = https://github.com/GillyRabutTsurwa/winpre-cars-studio
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/GillyRabutTsurwa/winpre-cars-frontend
