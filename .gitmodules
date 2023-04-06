@@ -2,3 +2,6 @@
 	path = frontend
 	url = git@github.com:GillyRabutTsurwa/winpre-cars-frontend.git
 	branch = master
+[submodule "api"]
+	path = api
+	url = git@github.com:GillyRabutTsurwa/winpre-cars-studio.git
